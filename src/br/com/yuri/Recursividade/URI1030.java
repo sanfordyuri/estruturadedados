@@ -38,16 +38,22 @@ public class URI1030 {
     }
 
     public static ArrayList<Integer> lendaRecursiva(ArrayList<Integer> pessoas, int k) {
-        if(pessoas.size() <= 2) {
+
+        pulo = k - 1;
+
+        if(pulo == pessoas.size()) {
+            int novo_pulo = (pessoas.size()%pulo);
+            return lendaRecursiva(pessoas, novo_pulo + 1);
+        } else if(pessoas.size() <= 2) {
             System.out.println("Chegou");
             return pessoas;
         } else {
-            pulo = k - 1;
             int pessoaRemovida = pessoas.get(pulo);
             ArrayList<Integer> pessoas_ordenadas = ordenar( pessoas, pessoaRemovida, (pulo +1 ) );
             pessoas = pessoas_ordenadas;
             return lendaRecursiva(pessoas, (pulo +1 ));
         }
+        
     }
 
 
