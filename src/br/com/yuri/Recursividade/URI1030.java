@@ -41,9 +41,10 @@ public class URI1030 {
 
         pulo = k - 1;
 
-        if(pulo == pessoas.size()) {
-            int novo_pulo = (pessoas.size()%pulo);
-            return lendaRecursiva(pessoas, novo_pulo + 1);
+        if(pulo >= pessoas.size()) {
+//            int novo_pulo = (pessoas.size()%pulo);
+//            return lendaRecursiva(pessoas, novo_pulo + 1);
+            return pessoas;
         } else if(pessoas.size() <= 2) {
             System.out.println("Chegou");
             return pessoas;
