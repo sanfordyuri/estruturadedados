@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 public class URI1030 {
 
-    private static int pulo;
-
     public static ArrayList<Integer> ordenar(ArrayList<Integer> arrayRecebidoAntesDeRemover, int ultimoRemovido, int k) {
         ArrayList<Integer> arrayOrdenado_pos_ultimoremovido = new ArrayList<>();
         ArrayList<Integer> arrayOrdenado_pre_ultimoremovido = new ArrayList<>();
@@ -14,7 +12,6 @@ public class URI1030 {
         boolean podeIniciar = false;
         for(int n : arrayRecebidoAntesDeRemover) {
             if (n == ultimoRemovido) {
-                System.out.println("Olha: " + n);
                 podeIniciar = true;
             } else if (podeIniciar) {
                 arrayOrdenado_pos_ultimoremovido.add(n);
@@ -25,23 +22,12 @@ public class URI1030 {
 
         ArrayList<Integer> arrayOrdenado = new ArrayList<>(arrayOrdenado_pos_ultimoremovido);
         arrayOrdenado.addAll(arrayOrdenado_pre_ultimoremovido);
-        if(arrayOrdenado.size() == 2) {
-            if(k%3 == 0) {
-                ArrayList<Integer> arrayOrdenadoInverso = new ArrayList<>();
-                arrayOrdenadoInverso.add(arrayOrdenado.get(1));
-                arrayOrdenadoInverso.add(arrayOrdenado.get(0));
-                return arrayOrdenadoInverso;
-            }
-            return arrayOrdenado;
-        } else {
-            return arrayOrdenado;
-        }
+        return arrayOrdenado;
     }
 
     public static ArrayList<Integer> lendaRecursiva(ArrayList<Integer> pessoas, int k) {
 
-        if(pessoas.size() == 3) {
-            System.out.println("Chegou");
+        if(pessoas.size() == 1) {
             return pessoas;
         } else if(k >= pessoas.size()) {
             int novo_pulo = (k % pessoas.size());
