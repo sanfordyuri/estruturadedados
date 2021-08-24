@@ -14,6 +14,7 @@ public class URI1030 {
         boolean podeIniciar = false;
         for(int n : arrayRecebidoAntesDeRemover) {
             if (n == ultimoRemovido) {
+                System.out.println("Olha: " + n);
                 podeIniciar = true;
             } else if (podeIniciar) {
                 arrayOrdenado_pos_ultimoremovido.add(n);
@@ -39,22 +40,19 @@ public class URI1030 {
 
     public static ArrayList<Integer> lendaRecursiva(ArrayList<Integer> pessoas, int k) {
 
-        pulo = k - 1;
-
-        if(pulo >= pessoas.size()) {
-//            int novo_pulo = (pessoas.size()%pulo);
-//            return lendaRecursiva(pessoas, novo_pulo + 1);
-            return pessoas;
-        } else if(pessoas.size() <= 2) {
+        if(pessoas.size() == 3) {
             System.out.println("Chegou");
             return pessoas;
+        } else if(k >= pessoas.size()) {
+            int novo_pulo = (k % pessoas.size());
+            return lendaRecursiva(pessoas, novo_pulo);
         } else {
-            int pessoaRemovida = pessoas.get(pulo);
-            ArrayList<Integer> pessoas_ordenadas = ordenar( pessoas, pessoaRemovida, (pulo +1 ) );
+            int pessoaRemovida = pessoas.get(k);
+            ArrayList<Integer> pessoas_ordenadas = ordenar( pessoas, pessoaRemovida, k );
             pessoas = pessoas_ordenadas;
-            return lendaRecursiva(pessoas, (pulo +1 ));
+            return lendaRecursiva(pessoas, k);
         }
-        
+
     }
     
 
@@ -70,7 +68,7 @@ public class URI1030 {
                 pessoas.add(j);
             }
 
-            ArrayList<Integer> pessoaSobrevivente = lendaRecursiva(pessoas, k);
+            ArrayList<Integer> pessoaSobrevivente = lendaRecursiva(pessoas, k-1);
             System.out.println(pessoaSobrevivente);
         }
     }
