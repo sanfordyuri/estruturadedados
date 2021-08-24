@@ -55,52 +55,7 @@ public class URI1030 {
         }
         
     }
-
-
-    public static void lendaDeFlaviusJosephus(int n, int k) {
-        ArrayList<Integer> numeroDePessoas = new ArrayList<>();
-
-        for (int i=1; i<=n; i++) {
-            numeroDePessoas.add(i);
-        }
-
-        final int pulo = k-1;
-
-        int pessoaRemovida = numeroDePessoas.get(pulo);
-        ArrayList<Integer> arrayOrdenado = ordenar(numeroDePessoas, pessoaRemovida, k);
-        System.out.println(arrayOrdenado);
-
-        pessoaRemovida = arrayOrdenado.get(pulo);
-        ArrayList<Integer> arrayOrdenado_novamente = ordenar(arrayOrdenado, pessoaRemovida, k);
-        System.out.println(arrayOrdenado_novamente);
-
-        pessoaRemovida = arrayOrdenado_novamente.get(pulo);
-        ArrayList<Integer> arrayOrdenado_novamente_novamente = ordenar(arrayOrdenado_novamente, pessoaRemovida, k);
-        System.out.println(arrayOrdenado_novamente_novamente);
-
-        pessoaRemovida = arrayOrdenado_novamente_novamente.get(pulo);
-        ArrayList<Integer> arrayOrdenado_novamente_novamente_novamente = ordenar(arrayOrdenado_novamente_novamente, pessoaRemovida, k);
-        System.out.println(arrayOrdenado_novamente_novamente_novamente);
-
-        pessoaRemovida = arrayOrdenado_novamente_novamente_novamente.get(pulo);
-        ArrayList<Integer> arrayOrdenado_novamente_novamente_novamente_novamente = ordenar(arrayOrdenado_novamente_novamente_novamente, pessoaRemovida, k);
-        System.out.println(arrayOrdenado_novamente_novamente_novamente_novamente);
-
-        pessoaRemovida = arrayOrdenado_novamente_novamente_novamente_novamente.get(pulo);
-        ArrayList<Integer> arrayOrdenado_novamente_novamente_novamente_novamente_novamente = ordenar(arrayOrdenado_novamente_novamente_novamente_novamente, pessoaRemovida, k);
-        System.out.println(arrayOrdenado_novamente_novamente_novamente_novamente_novamente);
-
-        pessoaRemovida = arrayOrdenado_novamente_novamente_novamente_novamente_novamente.get(pulo);
-        ArrayList<Integer> arrayOrdenado_novamente_novamente_novamente_novamente_novamente_novamente = ordenar(arrayOrdenado_novamente_novamente_novamente_novamente_novamente, pessoaRemovida, k);
-        System.out.println(arrayOrdenado_novamente_novamente_novamente_novamente_novamente_novamente);
-
-        pessoaRemovida = arrayOrdenado_novamente_novamente_novamente_novamente_novamente_novamente.get(pulo);
-        ArrayList<Integer> arrayOrdenado_novamente_novamente_novamente_novamente_novamente_novamente_novamente = ordenar(arrayOrdenado_novamente_novamente_novamente_novamente_novamente_novamente, pessoaRemovida, k);
-        System.out.println(arrayOrdenado_novamente_novamente_novamente_novamente_novamente_novamente_novamente);
-
-    }
-
-
+    
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
