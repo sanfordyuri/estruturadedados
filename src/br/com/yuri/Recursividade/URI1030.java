@@ -5,12 +5,15 @@ import java.util.Scanner;
 
 public class URI1030 {
 
-    public static ArrayList<Integer> ordenar(ArrayList<Integer> arrayRecebidoAntesDeRemover, int ultimoRemovido, int k) {
+    public static int[] ordenar(int[] arrayRecebidoAntesDeRemover, int ultimoRemovido) {
+
         ArrayList<Integer> arrayOrdenado_pos_ultimoremovido = new ArrayList<>();
         ArrayList<Integer> arrayOrdenado_pre_ultimoremovido = new ArrayList<>();
 
         boolean podeIniciar = false;
-        for(int n : arrayRecebidoAntesDeRemover) {
+
+        for(int i=0; i < arrayRecebidoAntesDeRemover.length; i++) {
+            int n = arrayRecebidoAntesDeRemover[i];
             if (n == ultimoRemovido) {
                 podeIniciar = true;
             } else if (podeIniciar) {
@@ -20,27 +23,36 @@ public class URI1030 {
             }
         }
 
-        ArrayList<Integer> arrayOrdenado = new ArrayList<>(arrayOrdenado_pos_ultimoremovido);
-        arrayOrdenado.addAll(arrayOrdenado_pre_ultimoremovido);
+
+        int[] arrayOrdenado = new int[(arrayRecebidoAntesDeRemover.length - 1)];
+        int contador = 0;
+        for (int n : arrayOrdenado_pos_ultimoremovido) {
+            arrayOrdenado[contador] = n;
+            contador++;
+        }
+        for (int n : arrayOrdenado_pre_ultimoremovido) {
+            arrayOrdenado[contador] = n;
+            contador++;
+        }
         return arrayOrdenado;
     }
 
-    public static ArrayList<Integer> lendaRecursiva(ArrayList<Integer> pessoas, int k) {
+    public static int[] lendaRecursiva(int[] pessoas, int k) {
 
-        if(pessoas.size() == 1) {
+        if (pessoas.length == 1) {
             return pessoas;
-        } else if(k >= pessoas.size()) {
-            int novo_pulo = (k % pessoas.size());
-            return lendaRecursiva(pessoas, novo_pulo);
         } else {
-            int pessoaRemovida = pessoas.get(k);
-            ArrayList<Integer> pessoas_ordenadas = ordenar( pessoas, pessoaRemovida, k );
-            pessoas = pessoas_ordenadas;
+            int pessoaRemovida;
+            if (k >= pessoas.length) {
+                pessoaRemovida = pessoas[(k % pessoas.length)];
+            } else {
+                pessoaRemovida = pessoas[(k)];
+            }
+            pessoas = ordenar(pessoas, pessoaRemovida);
             return lendaRecursiva(pessoas, k);
         }
 
     }
-    
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -49,13 +61,13 @@ public class URI1030 {
         for (int i = 0; i < nc; i++) {
             int n = s.nextInt();
             int k = s.nextInt();
-            ArrayList<Integer> pessoas = new ArrayList<>();
-            for (int j=1; j<=n; j++) {
-                pessoas.add(j);
+            int[] pessoas = new int[n];
+            for (int j = 1; j <= n; j++) {
+                pessoas[j-1] = j;
             }
 
-            ArrayList<Integer> pessoaSobrevivente = lendaRecursiva(pessoas, k-1);
-            System.out.println(pessoaSobrevivente);
+            int[] pessoaSobrevivente = lendaRecursiva(pessoas, k - 1);
+            System.out.println("Case " + (i + 1) + ": " + pessoaSobrevivente[0]);
         }
     }
 
